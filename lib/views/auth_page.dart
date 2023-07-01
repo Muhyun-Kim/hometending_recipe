@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hometending_recipe/views/components/auth_page/auth_page_body.dart';
+import 'components/auth_page/auth_page_body.dart';
+
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});

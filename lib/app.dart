@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hometending_recipe/views/auth_page.dart';
+import 'package:hometending_recipe/views/components/wrapper/auth_wrapper.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
         home: Scaffold(
-      body: AuthPage(),
+      body: AuthWrapper(),
     ));
   }
 }

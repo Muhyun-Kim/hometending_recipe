@@ -5,13 +5,8 @@ class HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {},
-          child: const Text("logout"),
-        ),
-      ),
+    return const Scaffold(
+      body: Center(),
     );
   }
 }

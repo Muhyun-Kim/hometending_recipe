@@ -5,9 +5,35 @@ class UserInfoPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("userInfoPageBody"),
+        child: SizedBox(
+          height: 400,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const TextField(
+                decoration: InputDecoration(
+                  label: Text("ニックネーム"),
+                ),
+              ),
+              const TextField(
+                decoration: InputDecoration(
+                  label: Text("好きなお酒"),
+                ),
+              ),
+              const TextField(
+                decoration: InputDecoration(
+                  label: Text("自己紹介"),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("次へ"),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

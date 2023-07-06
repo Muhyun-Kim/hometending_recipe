@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hometending_recipe/models/user_info_model.dart';
 import 'package:hometending_recipe/views/create_account_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../domain/firebase/firebase_login.dart';
+import '../../../domain/provider/user_info_provider.dart';
 
-class AuthPageBody extends HookWidget {
+class AuthPageBody extends HookConsumerWidget {
   const AuthPageBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isObscureText = useState(true);
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();

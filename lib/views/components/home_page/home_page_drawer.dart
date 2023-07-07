@@ -55,7 +55,11 @@ class _HomePageDrawerState extends ConsumerState<HomePageDrawer> {
             ),
             title: const Text('アカウント削除'),
             onTap: () async {
-              await currentUser.delete();
+              try {
+                currentUser.delete();
+              } catch (err) {
+                const Text('アカウント削除のため再ログインお願いいたします');
+              }
             },
           ),
           ListTile(

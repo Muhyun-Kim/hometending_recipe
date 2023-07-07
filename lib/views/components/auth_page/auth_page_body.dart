@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hometending_recipe/models/user_info_model.dart';
 import 'package:hometending_recipe/views/create_account_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../domain/firebase/firebase_login.dart';
-import '../../../domain/provider/user_info_provider.dart';
 
 class AuthPageBody extends HookConsumerWidget {
   const AuthPageBody({super.key});
@@ -21,63 +19,105 @@ class AuthPageBody extends HookConsumerWidget {
       child: Scaffold(
         body: Center(
           child: SizedBox(
-            height: 400,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextFormField(
-                  controller: emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        isObscureText.value = !isObscureText.value;
-                      },
-                      icon: Icon(
-                        isObscureText.value == true
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      hintText: 'Email',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ),
-                  obscureText: isObscureText.value,
                 ),
-                const SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseLogin()
-                        .signInWithEmail(emailController, passwordController);
-                  },
-                  child: const Text('Login'),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: TextFormField(
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          isObscureText.value = !isObscureText.value;
+                        },
+                        icon: Icon(
+                          isObscureText.value == true
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                      ),
+                    ),
+                    obscureText: isObscureText.value,
+                  ),
                 ),
-                const Text("又は"),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseLogin().signInWithGoogle();
-                  },
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      const Size(320, 40),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: SizedBox(
+                    height: 48,
+                    width: 200,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        FirebaseLogin().signInWithEmail(
+                            emailController, passwordController);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                      ),
+                      child: const Text(
+                        'ログイン',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                   ),
-                  child: const Text("login with google"),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseLogin().signInWithApple();
-                  },
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      const Size(320, 40),
+                const Text(
+                  "又は",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: SizedBox(
+                    height: 48,
+                    width: 360,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        FirebaseLogin().signInWithGoogle();
+                      },
+                      child: const Text(
+                        "googleログイン",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
-                  child: const Text("login with apple"),
                 ),
-                ElevatedButton(
+                SizedBox(
+                  height: 48,
+                  width: 360,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      FirebaseLogin().signInWithApple();
+                    },
+                    child: const Text(
+                      "appleログイン",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -86,11 +126,6 @@ class AuthPageBody extends HookConsumerWidget {
                       ),
                     );
                   },
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      const Size(320, 40),
-                    ),
-                  ),
                   child: const Text("アカウント作成"),
                 ),
               ],

@@ -18,30 +18,43 @@ class CreateAccountPageBody extends HookWidget {
           child: SizedBox(
             height: 400,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextField(
-                  decoration: const InputDecoration(
-                    label: Text('E-mail'),
-                  ),
-                  controller: emailController,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    label: const Text('Password'),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        isObscureText.value = !isObscureText.value;
-                      },
-                      icon: Icon(
-                        isObscureText.value == true
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'E-mail',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
+                    controller: emailController,
                   ),
-                  controller: passwordController,
-                  obscureText: isObscureText.value,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          isObscureText.value = !isObscureText.value;
+                        },
+                        icon: Icon(
+                          isObscureText.value == true
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                      ),
+                    ),
+                    controller: passwordController,
+                    obscureText: isObscureText.value,
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {

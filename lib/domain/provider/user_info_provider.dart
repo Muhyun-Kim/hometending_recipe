@@ -21,12 +21,12 @@ class CustomizedUserInfo {
     String uid = firebaseAuth.currentUser!.uid;
     DocumentSnapshot<Map<String, dynamic>> snapshot =
         await firestore.collection('userInfo').doc(uid).get();
-    final info = snapshot.data()!;
+    final userInfo = snapshot.data()!;
     return UserInfoModel(
-        nickName: info['nickName'],
-        favoriteDrink: info['favoriteDrink'],
-        aboutMe: info['aboutMe'],
-        profileImage: info['profileImage']);
+        nickName: userInfo['nickName'],
+        favoriteDrink: userInfo['favoriteDrink'],
+        aboutMe: userInfo['aboutMe'],
+        profileImage: userInfo['profileImage']);
   }
 
   Future<bool> addUserInfo(UserInfoModel userInfo) async {

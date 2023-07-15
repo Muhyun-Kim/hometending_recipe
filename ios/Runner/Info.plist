@@ -57,6 +57,12 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>このアプリは写真をアップロードするため、ライブラリにアクセスしようとしています。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>このアプリでは、カメラにファイルを追加する必要があります。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>このアプリは、写真ライブラリとマイクにファイルを追加する必要があります。</string>
 	<false/>
 </dict>
 </plist>

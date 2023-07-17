@@ -22,7 +22,7 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) {
 mixin _$RecipeModel {
   String get userUid => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
   List<String> get ingredient => throw _privateConstructorUsedError;
   String get howToMake => throw _privateConstructorUsedError;
   String get cocktailName => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $RecipeModelCopyWith<$Res> {
   $Res call(
       {String userUid,
       String userName,
-      DateTime createdAt,
+      String createdAt,
       List<String> ingredient,
       String howToMake,
       String cocktailName,
@@ -83,7 +83,7 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       ingredient: null == ingredient
           ? _value.ingredient
           : ingredient // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$_RecipeModelCopyWith<$Res>
   $Res call(
       {String userUid,
       String userName,
-      DateTime createdAt,
+      String createdAt,
       List<String> ingredient,
       String howToMake,
       String cocktailName,
@@ -153,7 +153,7 @@ class __$$_RecipeModelCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       ingredient: null == ingredient
           ? _value._ingredient
           : ingredient // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$_RecipeModel implements _RecipeModel {
   @override
   final String userName;
   @override
-  final DateTime createdAt;
+  final String createdAt;
   final List<String> _ingredient;
   @override
   List<String> get ingredient {
@@ -265,7 +265,7 @@ abstract class _RecipeModel implements RecipeModel {
   factory _RecipeModel(
       {required final String userUid,
       required final String userName,
-      required final DateTime createdAt,
+      required final String createdAt,
       required final List<String> ingredient,
       required final String howToMake,
       required final String cocktailName,
@@ -279,7 +279,7 @@ abstract class _RecipeModel implements RecipeModel {
   @override
   String get userName;
   @override
-  DateTime get createdAt;
+  String get createdAt;
   @override
   List<String> get ingredient;
   @override

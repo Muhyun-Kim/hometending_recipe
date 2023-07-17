@@ -8,7 +8,7 @@ class RecipeModel with _$RecipeModel {
   factory RecipeModel({
     required String userUid,
     required String userName,
-    required DateTime createdAt,
+    required String createdAt,
     required List<String> ingredient,
     required String howToMake,
     required String cocktailName,

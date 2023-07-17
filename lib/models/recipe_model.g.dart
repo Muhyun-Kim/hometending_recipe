@@ -10,7 +10,7 @@ _$_RecipeModel _$$_RecipeModelFromJson(Map<String, dynamic> json) =>
     _$_RecipeModel(
       userUid: json['userUid'] as String,
       userName: json['userName'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt: json['createdAt'] as String,
       ingredient: (json['ingredient'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$_RecipeModelToJson(_$_RecipeModel instance) =>
     <String, dynamic>{
       'userUid': instance.userUid,
       'userName': instance.userName,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'createdAt': instance.createdAt,
       'ingredient': instance.ingredient,
       'howToMake': instance.howToMake,
       'cocktailName': instance.cocktailName,

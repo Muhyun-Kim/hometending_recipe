@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../models/recipe_model.dart';
 
-final recipeStateProvider = StateProvider((ref) => []);
+final recipeStateProvider = StateProvider<RecipeModel?>((ref) => null);
 
 final recipeProvider = Provider((ref) => Recipe());
 
@@ -11,6 +11,20 @@ class Recipe {
   final recipeRef = firestore.collection('recipe');
 
   Stream get allRecipes => recipeRef.snapshots();
+
+  RecipeModel mapToRecipe(Map<String, dynamic> data) {
+    return RecipeModel(
+      userUid: data['userUid'],
+      userName: data['userName'],
+      createdAt: data['createdAt'],
+      ingredient: (data['ingredient'] as List<dynamic>)
+          .map((item) => item.toString())
+          .toList(),
+      howToMake: data['howToMake'],
+      cocktailName: data['cocktailName'],
+      like: data['like'],
+    );
+  }
 
   Future<bool> addRecipe(RecipeModel recipe) async {
     try {

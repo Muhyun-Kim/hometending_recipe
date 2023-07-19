@@ -1,21 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hometending_recipe/models/recipe_model.dart';
 import 'package:hometending_recipe/views/recipe_detail_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../domain/provider/recipe_provider.dart';
+import '../../../models/recipe_model.dart';
 
 class RecipeListItem extends HookConsumerWidget {
-  final RecipeModel recipe;
+  final RecipeModel recipeItem;
   final AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot;
   final int index;
+  final String documentId;
 
   const RecipeListItem({
     super.key,
-    required this.recipe,
+    required this.recipeItem,
     required this.snapshot,
     required this.index,
+    required this.documentId,
   });
 
   @override
@@ -25,10 +27,10 @@ class RecipeListItem extends HookConsumerWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>  RecipeDetailPage(
-          recipe: recipe,
-          snapshot: snapshot,
-          index: index,
+          builder: (context) => RecipeDetailPage(
+            recipeItem: recipeItem,
+            index: index,
+            documentId: documentId,
           ),
         ),
       ),
@@ -49,9 +51,9 @@ class RecipeListItem extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(recipe.cocktailName),
+                Text(recipeItem.cocktailName),
                 Row(
-                  children: recipe.ingredient
+                  children: recipeItem.ingredient
                       .map((ingredient) => Container(
                             margin: const EdgeInsets.only(right: 8),
                             decoration: const BoxDecoration(
@@ -67,7 +69,7 @@ class RecipeListItem extends HookConsumerWidget {
                       onPressed: () {
                         final documentId = snapshot.data!.docs[index].id;
                         provider.editRecipe(
-                          recipe.copyWith(like: recipe.like + 1),
+                          recipeItem.copyWith(like: recipeItem.like + 1),
                           documentId,
                         );
                       },
@@ -75,7 +77,7 @@ class RecipeListItem extends HookConsumerWidget {
                         Icons.favorite_border_outlined,
                       ),
                     ),
-                    Text(recipe.like.toString()),
+                    Text(recipeItem.like.toString()),
                   ],
                 ),
               ],

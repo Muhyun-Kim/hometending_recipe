@@ -22,11 +22,13 @@ class RecipeListView extends HookConsumerWidget {
       itemCount: docs.length,
       itemBuilder: (context, index) {
         final data = docs[index].data();
-        final recipe = provider.mapToRecipe(data);
+        final recipeItem = provider.mapToRecipe(data);
+        final documentId = docs[index].id;
         return RecipeListItem(
-          recipe: recipe,
+          recipeItem: recipeItem,
           snapshot: snapshot,
           index: index,
+          documentId : documentId,
         );
       },
     );

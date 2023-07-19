@@ -1,16 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hometending_recipe/domain/firebase/firebase_instance.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../models/recipe_model.dart';
 
-final recipeStateProvider = StateProvider<RecipeModel?>((ref) => null);
+class RecipeState {
+  List<RecipeModel> recipes = [];
+  bool isLoading = false;
+  String error = '';
+}
+
+
 
 final recipeProvider = Provider((ref) => Recipe());
 
 class Recipe {
   final recipeRef = firestore.collection('recipe');
 
-  Stream get allRecipes => recipeRef.snapshots();
+  Stream<QuerySnapshot<Map<String, dynamic>>> get allRecipes =>
+      recipeRef.orderBy('createdAt', descending: true).snapshots();
 
   RecipeModel mapToRecipe(Map<String, dynamic> data) {
     return RecipeModel(

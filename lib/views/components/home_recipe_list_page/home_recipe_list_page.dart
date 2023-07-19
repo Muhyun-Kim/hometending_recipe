@@ -10,15 +10,16 @@ class HomeRecipeListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.read(recipeProvider);
+    final recipe = ref.read(recipeProvider);
     return Column(
       children: [
         Expanded(
           child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-            stream: provider.recipeRef
+            stream: recipe.recipeRef
                 .orderBy('createdAt', descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
+              print(snapshot);
               final docs = snapshot.data?.docs ?? [];
               return RecipeListView(
                 docs: docs,

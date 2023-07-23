@@ -47,6 +47,7 @@ dependencies:
   social_login_buttons: ^1.0.7
   flutter_signin_button: ^2.0.0
   intl: ^0.18.1
+  go_router: ^9.1.0
 
 dev_dependencies:
   flutter_test:

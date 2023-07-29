@@ -50,7 +50,7 @@ class _UpdateProfilePageBodyState extends ConsumerState<UpdateProfilePageBody> {
                   );
                   customizedUserInfoProvider.editUserInfo(newUserInfo);
                   final customizedUserInfo =
-                      await ref.read(userInfoProvider).getUserInfo();
+                      await customizedUserInfoProvider.getUserInfo();
                   ref.read(userInfoStateProvider.notifier).state =
                       customizedUserInfo;
                   if (mounted) {

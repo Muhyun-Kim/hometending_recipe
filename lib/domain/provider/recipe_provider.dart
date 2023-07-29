@@ -10,8 +10,6 @@ class RecipeState {
   String error = '';
 }
 
-
-
 final recipeProvider = Provider((ref) => Recipe());
 
 class Recipe {

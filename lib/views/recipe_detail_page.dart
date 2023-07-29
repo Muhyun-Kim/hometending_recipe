@@ -41,7 +41,10 @@ class RecipeDetailPage extends ConsumerWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const EditRecipePage(),
+                  builder: (context) =>  EditRecipePage(
+                    recipeItem : recipeItem,
+                    documentId: documentId,
+                  ),
                 ),
               );
             },

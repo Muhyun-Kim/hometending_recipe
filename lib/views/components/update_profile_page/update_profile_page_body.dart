@@ -16,7 +16,7 @@ class _UpdateProfilePageBodyState extends ConsumerState<UpdateProfilePageBody> {
   @override
   Widget build(BuildContext context) {
     final currentUserInfo = ref.watch(userInfoStateProvider)!;
-    final customizedUserInfoProvider = ref.read(userInfoProvider);
+    final customizedUserInfoProvider = ref.watch(userInfoProvider);
     final aboutMeController =
         useTextEditingController(text: currentUserInfo.aboutMe);
     final favoriteDrinkController =

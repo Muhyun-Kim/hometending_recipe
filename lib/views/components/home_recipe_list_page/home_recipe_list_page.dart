@@ -19,7 +19,6 @@ class HomeRecipeListPage extends HookConsumerWidget {
                 .orderBy('createdAt', descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
-              print(snapshot);
               final docs = snapshot.data?.docs ?? [];
               return RecipeListView(
                 docs: docs,

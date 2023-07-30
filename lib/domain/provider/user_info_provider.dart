@@ -38,15 +38,6 @@ class CustomizedUserInfo {
     }
   }
 
-  Future<bool> deleteUserInfo() async {
-    try {
-      await userDocument.delete();
-      return true;
-    } catch (e) {
-      return Future.error(e);
-    }
-  }
-
   Future<bool> editUserInfo(UserInfoModel userInfo) async {
     try {
       await userDocument.update(userInfo.toJson());

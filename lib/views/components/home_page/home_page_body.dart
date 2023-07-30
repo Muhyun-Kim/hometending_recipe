@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../add_recipe_page/show_add_recipe_modal.dart';
 import '../home_recipe_list_page/home_recipe_list_page.dart';
+import '../my_profile_page/my_profile_page.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -15,11 +16,7 @@ class _HomePageBodyState extends State<HomePageBody> {
 
   List<Widget> pages = [
     const HomeRecipeListPage(),
-    const SizedBox(
-      height: double.infinity,
-      width: double.infinity,
-      child: Center(child: Text('Third Page')),
-    ),
+    const MyProfilePage(),
   ];
 
   @override

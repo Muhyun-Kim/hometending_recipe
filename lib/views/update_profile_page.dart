@@ -10,7 +10,8 @@ class UpdateProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('プロフィール'),
       ),
-      body: const UpdateProfilePageBody(),
+      body: const UpdateProfilePageBody(
+      ),
     );
   }
 }

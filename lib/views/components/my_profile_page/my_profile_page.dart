@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hometending_recipe/domain/provider/user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MyProfilePage extends ConsumerStatefulWidget {
@@ -18,6 +19,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
       print("pick new profile image");
     }
 
+    final myProfile = ref.watch(userInfoStateProvider)!;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -47,6 +49,9 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
               ),
             ],
           ),
+          Text(myProfile.nickName),
+          Text(myProfile.favoriteDrink),
+          Text(myProfile.aboutMe),
         ],
       ),
     );

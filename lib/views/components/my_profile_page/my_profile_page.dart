@@ -15,6 +15,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     File? image;
+
     void _pickNewProfileImage() {
       print("pick new profile image");
     }
@@ -26,8 +27,11 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
         children: [
           Stack(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(60),
+              ClipOval(
+                child: SizedBox(
+                  width: 160,
+                  child: Image.asset('images/default_profile.png'),
+                ),
               ),
               Positioned(
                 bottom: 0,

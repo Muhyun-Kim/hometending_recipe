@@ -29,7 +29,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
             children: [
               ClipOval(
                 child: SizedBox(
-                  width: 160,
+                  width: 120,
                   child: Image.asset('images/default_profile.png'),
                 ),
               ),

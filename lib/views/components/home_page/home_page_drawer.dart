@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hometending_recipe/views/update_profile_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../domain/firebase/firebase_instance.dart';
@@ -35,16 +34,11 @@ class _HomePageDrawerState extends ConsumerState<HomePageDrawer> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.account_circle_outlined,
+              Icons.logout_outlined,
             ),
-            title: const Text('プロフィール'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const UpdateProfilePage(),
-                ),
-              );
+            title: const Text('ログアウト'),
+            onTap: () async {
+              await firebaseAuth.signOut();
             },
           ),
           ListTile(
@@ -64,12 +58,12 @@ class _HomePageDrawerState extends ConsumerState<HomePageDrawer> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.logout_outlined,
+              Icons.description,
             ),
-            title: const Text('ログアウト'),
-            onTap: () async {
-              await firebaseAuth.signOut();
-            },
+            title: const Text('利用規約'),
+
+            /// Todo : 利用規約に移動する機能追加
+            onTap: () => print('利用規約'),
           ),
         ],
       ),
